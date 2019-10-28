@@ -18,7 +18,7 @@ class CreateSongsTable extends Migration
             $table->string('title', 150)->unique();
             $table->mediumText('lyrics');
             $table->string('artist', 150);
-            $table->integer('Created By');
+            $table->integer('created_by');
             $table->timestamps();
         });
     }

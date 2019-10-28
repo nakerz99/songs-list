@@ -1,6 +1,6 @@
 
  <!-- Sticky Footer -->
- <footer class="sticky-footer">
+      <footer class="sticky-footer">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
             <span>Copyright © Your Website 2019</span>
@@ -38,13 +38,14 @@
     </div>
   </div>
 
+
+
   <script src="{{ asset('assets/vendor/jquery/jquery.min.js')}}"></script>
   <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
   <script src="{{ asset('assets/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-  <script src="{{ asset('assets/vendor/datatables/jquery.dataTables.js')}}"></script>
-  <script src="{{ asset('assets/vendor/datatables/dataTables.bootstrap4.js')}}"></script>
-  <script src="{{ asset('assets/js/sb-admin.min.js')}}"></script>
-  <script src="{{ asset('assets/js/demo/datatables-demo.js')}}"></script>
+
+
+  @yield('js')
 
 </body>
 
