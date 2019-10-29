@@ -49,11 +49,12 @@
 
   <script src="{{ asset('assets/vendor/jquery/jquery.min.js')}}"></script>
   <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
   <script src="{{ asset('assets/vendor/jquery-easing/jquery.easing.min.js')}}"></script>        
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
   <script src="{{ asset('assets/toast/toast.min.js')}}"></script>
   @yield('js')
-
 </body>
 
 </html>

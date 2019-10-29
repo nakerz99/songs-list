@@ -8,14 +8,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-
-  <title>SB Admin - Tables</title>
-
-  <!-- Custom fonts for this template-->
+  <title>@yield('title')</title>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <link href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
   @yield('css')
   <link rel="stylesheet" href="{{ asset('assets/toast/toast.min.css')}}">
-  <!-- Custom styles for this template-->
   <link href="{{ asset('assets/css/sb-admin.css')}}" rel="stylesheet">
   <link href="{{ asset('css/style.css')}}" rel="stylesheet">
 </head>

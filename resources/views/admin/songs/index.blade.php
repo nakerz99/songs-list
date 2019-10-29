@@ -1,5 +1,6 @@
 @extends('layouts.admin_layout')
 
+@section('title', 'Song List')
 
 @section('css')
   <link href="{{ asset('assets/vendor/datatables/dataTables.bootstrap4.css')}}" rel="stylesheet">
@@ -63,9 +64,15 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <div class="alert alert-danger alert-dismissible alert-song-input" hidden>
+        <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+        <p class="error-message">
+        </p>
+      </div>
+
       <form action="/song" method="post" id="song_form">
       @csrf
-      <input type="hidden" id="song_id" value="0">
+      <input type="hidden" id="song_id" name="song_id" value="0">
       <div class="modal-body">
         <div class="row">
         <div class="col-md-12">
@@ -76,7 +83,7 @@
         <br>
           <div class="form-group">
             <label for="lyrics">{{ __('Song Lyrics') }}</label>
-              <textarea name="lyrics" id="lyrics" cols="30" rows="10" class="form-control {{$errors->has('title')? 'is-invalid':''}}" required="required"></textarea>
+              <textarea name="lyrics" id="lyrics" cols="30" rows="10" class="form-control {{$errors->has('title')? 'is-invalid':''}}" required="required" ></textarea>
           </div> 
           <div class="form-label-group">
               <input type="artist" name="artist" id="artist" class="form-control {{$errors->has('artist')? 'is-invalid':''}}" placeholder="Song artist" required="required" autofocus="autofocus">
