@@ -14,8 +14,14 @@
   <!-- Custom fonts for this template-->
   <link href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
   @yield('css')
-
+  <link rel="stylesheet" href="{{ asset('assets/toast/toast.min.css')}}">
   <!-- Custom styles for this template-->
   <link href="{{ asset('assets/css/sb-admin.css')}}" rel="stylesheet">
-
+  <link href="{{ asset('css/style.css')}}" rel="stylesheet">
 </head>
+<body id="page-top">
+<div id="overlay" style="display:none;">
+    <div class="spinner"></div>
+    <br/>
+    Loading...
+</div>  

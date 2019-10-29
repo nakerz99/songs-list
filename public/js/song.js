@@ -5,6 +5,8 @@ $( document ).ready(function() {
         }
       });
       songList();
+
+      
  });
 
 
@@ -14,7 +16,10 @@ $( document ).ready(function() {
       "aProcessing": true,
       "aServerSide": true,
       "orderCellsTop": true,
-      "searching": true,
+      paging: true,
+      searching: true,
+      destroy: true,
+      "aaSorting": [],
       "ajax": {
       "url": '/songs/showlist',
       "dataSrc": ""
@@ -62,8 +67,8 @@ $( document ).ready(function() {
             },
             "mRender": function( data, type, full ,meta) {
                 return '<td>'+
-                          '<button data-toggle="modal" data-target="#app_modal" class="cart-btn btn btn-default btn-sm"><span class="fa fa-eye"></span></button> | '+
-                          '<button data-toggle="modal" data-target="#app_modal" class="cart-btn btn btn-danger btn-sm"><span class="fa fa-trash"></span></button>'
+                          '<button data-id="'+full.id+'"  data-title="'+full.title+'"   data-lyrics="'+full.lyrics+'"  data-artist="'+full.artist+'" class="cart-btn btn btn-default btn-sm btn-view"><span class="fa fa-eye"></span></button> | '+
+                          '<button data-toggle="modal" data-target="#songlistModal" class="cart-btn btn btn-danger btn-sm"><span class="fa fa-trash"></span></button>'
                       +'</td>';
             }
         },
@@ -74,10 +79,35 @@ $( document ).ready(function() {
   
   $('.btn-add-song').click(function(){
       $('#songlistModal').modal('show');
+     
+  })
+
+  $(document).on("click",".btn-view",function() {
+    $('#overlay').fadeIn();
+    $.ajax({
+        url: 'songs/'+$(this).data('id'),
+        type: "get",
+        async: false,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (data) {
+          $('#overlay').delay(1).fadeOut('fast', function(){
+            $('#songlistModal').modal('show');
+            $('#song_id').val(data.id)
+            $('#title').val(data.title)
+            $('#lyrics').text(data.lyrics)
+            $('#artist').val(data.artist)
+          });
+        }
+    });
   })
 
   $('#song_form').submit(function(e){
     e.preventDefault();
+    $('#overlay').fadeIn();
+    $('#songlistModal').modal('hide');
     var formData = new FormData($(this)[0]);
     $.ajax({
         url: $(this).attr('actions'),
@@ -89,10 +119,12 @@ $( document ).ready(function() {
         processData: false,
         dataType: "json",
         success: function (data) {
-          $('.name').text(data.name);
-          $('.email').text(data.email);
-          $('.msg').html(data.message);
-          $('#viewMessages').modal('show');
+          if (data == 'success') {
+            $('#overlay').delay(1000).fadeOut('fast', function(){
+              songList();
+              notif(data, 'Song Successfully Added!', 'success');
+            });
+          }
         }
     });
   });
@@ -100,4 +132,14 @@ $( document ).ready(function() {
   
 
 
+
+function notif(type, message,title){
+  $.toast({
+    title: title,
+    content: message,
+    type: type,
+    pause_on_hover: true,
+    delay: 5000
+  });
+}
 

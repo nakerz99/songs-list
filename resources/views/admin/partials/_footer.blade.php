@@ -32,7 +32,14 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <a class="btn btn-primary" href="{{ route('logout') }}"
+              onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+              {{ __('Logout') }}
+          </a>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+          </form>
         </div>
       </div>
     </div>
@@ -42,9 +49,9 @@
 
   <script src="{{ asset('assets/vendor/jquery/jquery.min.js')}}"></script>
   <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-  <script src="{{ asset('assets/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-
-
+  <script src="{{ asset('assets/vendor/jquery-easing/jquery.easing.min.js')}}"></script>        
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="{{ asset('assets/toast/toast.min.js')}}"></script>
   @yield('js')
 
 </body>

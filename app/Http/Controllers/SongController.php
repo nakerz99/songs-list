@@ -25,8 +25,10 @@ class SongController extends Controller
     public function showList()
     {
         // I use select to miminize size of data in response instead of All()
-        $songs = Song::select('title', 'artist', 'created_at')->get();
-
+        $songs = Song::select('id','title', 'artist', 'created_at')
+                ->orderBy('id', 'desc')
+                ->get();
+                
         $songs = collect($songs);
         $songs = $songs->map(function($song){
             $song->date_created = date('M d, Y', strtotime($song->created_at));
@@ -50,6 +52,8 @@ class SongController extends Controller
             'artist'      => $request->artist,
             'created_by'  => Auth::user()->id]
         );
+        
+        return response()->json('success');
     }
 
     /**
@@ -58,9 +62,10 @@ class SongController extends Controller
      * @param  \App\Song  $song
      * @return \Illuminate\Http\Response
      */
-    public function show(Song $song)
+    public function show($song)
     {
-        //
+        $result = Song::where('id',$song)->first();
+        return response()->json($result);
     }
 
     /**

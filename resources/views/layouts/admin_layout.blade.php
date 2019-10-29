@@ -1,5 +1,4 @@
 @include('admin.partials._header')
-<body id="page-top">
     <!-- navbar -->
     @include('admin.partials._navbar')
     <!-- Sidebar -->

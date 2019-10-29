@@ -65,6 +65,7 @@
       </div>
       <form action="/song" method="post" id="song_form">
       @csrf
+      <input type="hidden" id="song_id" value="0">
       <div class="modal-body">
         <div class="row">
         <div class="col-md-12">
