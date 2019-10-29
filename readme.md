@@ -9,11 +9,11 @@
 
 ## Song Portal Installation
 - after cloning
-    - composer install
-    - create .env file from .env.example(make database and change credetials)
-        -run php artisan migrate
-    - run database seeder
-        php artisan seeder
-- User:
-    Username: admin@exam.com
-    Password: password
+    - composer install <br>
+    - create .env file from .env.example(make database and change credetials)<br>
+        -run php artisan migrate<br>
+    - run database seeder<br>
+        php artisan seeder<br>
+- User:<br>
+    Username: admin@exam.com<br>
+    Password: password<br>
